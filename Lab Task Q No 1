@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class House {
+private:
+    string address;
+    int number;
+    string owner;
+    float price;
+    string status;
+    string type;
+
+public:
+    void readHouseInfo() {
+        cout << "Enter Address: ";
+        getline(cin, address);
+        cout << "Enter Number: ";
+        cin >> number;
+        cin.ignore(); 
+        cout << "Enter Owner: ";
+        getline(cin, owner);
+        cout << "Enter Price: ";
+        cin >> price;
+        cin.ignore(); 
+        cout << "Enter Status (Occupied, Vacant, For Sale): ";
+        getline(cin, status);
+        cout << "Enter Type (Single Family, Apartment, Townhouse): ";
+        getline(cin, type);
+    }
+
+    void displayHouseInfo() const {
+        cout << "Address: " << address << endl;
+        cout << "Number: " << number << endl;
+        cout << "Owner: " << owner << endl;
+        cout << "Price: $" << price << endl;
+        cout << "Status: " << status << endl;
+        cout << "Type: " << type << endl;
+    }
+};
+
+int main() {
+    House available[100];
+    char choice;
+    for (int i = 0; i < 100; ++i) {
+        available[i].readHouseInfo();
+        available[i].displayHouseInfo();
+        cout << "Do you want to enter another house? (y/n): ";
+        cin >> choice;
+        cin.ignore(); 
+        if (choice != 'y' && choice != 'Y') {
+            break;
+        }
+    }
+    return 0;
+}
